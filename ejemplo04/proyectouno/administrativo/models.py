@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 
@@ -53,3 +54,21 @@ class Matricula(models.Model):
     def __str__(self):
         return "Matricula: Estudiante(%s) - Modulo(%s)" % \
                 (self.estudiante, self.modulo.nombre)
+
+
+    def obtenerAnio (self):
+        anio_Actual = datetime.datetime.now().year
+        valor = anio_Actual -self.edad
+        return valor
+
+    def obtener_ciudad(self):
+        ciudad = str(self.cedula)
+
+        if self.cedula[:2] == "11":
+                return ciudad == "Loja"
+        else:
+                return ciudad == "Otra ciudad"
+
+    def __str__(self):
+        return "Nombre: %s - Apellido: %s - Cédula: %s - edad: %d - Año: %s" % (self.nombre, self.apellido, self.cedula, self.edad, self.año)
+    
