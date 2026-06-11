@@ -41,9 +41,19 @@ class NumeroTelefonicoAdmin(admin.ModelAdmin):
     # raw_id_fields que permite acceder a una interfaz
     # para buscar los estudiantes y seleccionar el que
     # se desee
-    raw_id_fields = ('estudiante',)
+    #raw_id_fields = ('estudiante',)
 
     def get_estudiante(self, obj):
-        """ """
+
+
+        """ 
+        obj telefonico y se accede al estudiante relacionado
+        y se muestra el apellido del estudiante
+        """
         return obj.estudiante.apellido
 admin.site.register(NumeroTelefonico, NumeroTelefonicoAdmin)
+
+#para django: lista = Estudiantes.objects.all(), print((lista))
+
+#for i in lista:
+ #   print(i.nombre)
