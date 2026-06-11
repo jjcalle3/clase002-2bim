@@ -1,1 +1,1 @@
-# clase02-2bim
+# clase02-2bimclase002-2bim/ejemplo01/proyectouno/proyectouno/settings.py
