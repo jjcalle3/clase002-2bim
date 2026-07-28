@@ -1,0 +1,44 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Listado de Telefonos
+{% endblock %}
+
+{% block content %}
+<h3>Número de telefonos {{ numero_telefonos }}</h3>
+
+<table id="tabla_datos">
+
+  <thead>
+    <tr>
+      <th>Estudiante</th>
+      <th>Telefono</th>
+      <th>Tipo</th>
+      <th>Operadora</th>
+      <th>Editar Telefono</th>
+      <th>Eliminar Telefono</th>
+    </tr>
+  </thead>
+
+  {% for t in telefonos %}
+  <tr>
+    <td> {{t.estudiante.nombre}} </td>
+    <td> {{t.telefono}} </td>
+    <td> {{t.tipo}} </td>
+    <td> {{t.obtener_operadora}} </td>
+    <td> <a href="{% url 'editar_numero_telefonico' t.id %}">editar</a> </td>
+    <td>
+      [<a href="{% url 'eliminar_numero_telefonico' t.id %}"
+      onclick="return confirm('¿Está seguro de la eliminación?')" >
+      eliminar</a>]
+
+  </tr>
+  {% endfor %}
+</table>
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('#tabla_datos').DataTable();
+  });
+</script>
+{% endblock %}
